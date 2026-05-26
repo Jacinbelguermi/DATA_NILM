@@ -310,11 +310,5 @@ def get_data(
         X_test,
         Y_train,
         Y_test,
-        new_X_train,
-        new_X_test,
-        train_set_target,
-        test_set_target,
-        appliances_list,
-        avg,
-        percentage_targets
+        appliances_list
     )

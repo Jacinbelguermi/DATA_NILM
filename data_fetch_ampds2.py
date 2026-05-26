@@ -23,10 +23,7 @@ def get_data(segment_length=30,
     RSEp = data_csv_P[1:-1,2]
     GREp = data_csv_P[1:-1,3]
 
-    apps = ["Fridge" , "Heat pump", "Clothes washer",
-            "Wall oven", "Hot water", "Furnace",
-            "Dishwasher", "Clothes dryer", "Office",
-            "Bassement","TV"]
+    
 
     FGEp = data_csv_P[1:-1,cols.index("FGE")]
     HPEp = data_csv_P[1:-1,cols.index("HPE")]
@@ -165,5 +162,8 @@ def get_data(segment_length=30,
         [rawXTR, rawXTS, rawYTR, rawYTS],
         segment_length
     )
-
+    apps = ["Fridge" , "Heat pump", "Clothes washer",
+            "Wall oven", "Hot water", "Furnace",
+            "Dishwasher", "Clothes dryer", "Office",
+            "Bassement","TV"]
     return X_train, X_test, y_train, y_test,apps
