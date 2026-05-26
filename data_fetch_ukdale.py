@@ -254,5 +254,5 @@ def get_data(
         Y_test,
         X,
         Y,
-        merged_df
+        house5_appp_id[chosen_apps]
     )
