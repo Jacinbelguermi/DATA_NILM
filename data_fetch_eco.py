@@ -10,7 +10,8 @@ def get_data(
     resample_steps=6,
     segment_length=30,
     aggregate_input=False,
-    normalization=False
+    normalization=False,
+    middle_point = True
 ):
 
     # =====================================================
@@ -53,14 +54,20 @@ def get_data(
 
             lIdx = i
             hIdx = i + length
-
+            mid = int(i+(length/2))
             lisXTR.append(
                 XTR[lIdx:hIdx].copy()
             )
-
-            lisYTR.append(
+            if (middle_point == False):
+                lisYTR.append(
                 YTR[hIdx - 1].copy()
             )
+            
+            else:
+                lisYTR.append(
+                YTR[mid].copy())
+            
+            
 
         return (
             np.asarray(lisXTR),
