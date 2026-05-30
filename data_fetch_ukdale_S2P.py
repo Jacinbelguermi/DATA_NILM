@@ -163,61 +163,50 @@ def get_data(
     # =====================================================
     # SPLIT FUNCTIONS
     # =====================================================
-    def split_data(data, leng=100, overlap_step=50):
-
-        XTR = data[0].copy()
-        YTR = data[1].copy()
+    def split_data(data,leng=100,overlap= 50):
+        XTR= data[0].copy()
+        YTR= data[1].copy()
 
         M = int(XTR.shape[0])
-
         lisXTR = []
         lisYTR = []
 
-        for l in range(0, M - leng, overlap_step):
-
+        #maxes = []
+        # TRAIN
+        print(M-leng)
+        for l in range(0,M-leng):
+            #print(i)
             lIdx = l
-            hIdx = l + leng
+            hIdx = l+leng
+            mid = l+ int(leng/2)
+            #maxes.append(np.max(XTR[lIdx:hIdx,:]))
+            lisXTR.append(XTR[lIdx:hIdx].copy())
+            lisYTR.append(YTR[mid,:].copy())
 
-            lisXTR.append(
-                XTR[lIdx:hIdx].copy()
-            )
+        return np.asarray(lisXTR),np.asarray(lisYTR)#, np.asarray(maxes
 
-            lisYTR.append(
-                YTR[lIdx:hIdx].copy()
-            )
 
-        return (
-            np.asarray(lisXTR),
-            np.asarray(lisYTR)
-        )
-
-    def split_data_test(data, leng=100):
-
-        XTR = data[0].copy()
-        YTR = data[1].copy()
+    def split_data_test(data,leng=100):
+        XTR= data[0].copy()
+        YTR= data[1].copy()
 
         M = int(XTR.shape[0])
-
         lisXTR = []
         lisYTR = []
 
-        for l in range(0, M - leng, leng):
-
+        #maxes = []
+        # TRAIN
+        print(M-leng)
+        for l in range(0,M-leng):
+            #print(i)
             lIdx = l
-            hIdx = l + leng
+            hIdx = l+leng
+            mid = l+ int(leng/2)
+            #maxes.append(np.max(XTR[lIdx:hIdx,:]))
+            lisXTR.append(XTR[lIdx:hIdx].copy())
+            lisYTR.append(YTR[mid,:].copy())
 
-            lisXTR.append(
-                XTR[lIdx:hIdx].copy()
-            )
-
-            lisYTR.append(
-                YTR[lIdx:hIdx].copy()
-            )
-
-        return (
-            np.asarray(lisXTR),
-            np.asarray(lisYTR)
-        )
+        return np.asarray(lisXTR),np.asarray(lisYTR)
 
     # =====================================================
     # CREATE WINDOWS
