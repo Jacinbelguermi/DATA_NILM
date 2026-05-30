@@ -16,7 +16,7 @@ def get_data(
     normalize=False,
     thresholds=None
 ):
-
+    app_list_real = []
     # =====================================================
     # APPLIANCE IDS
     # =====================================================
@@ -65,7 +65,7 @@ def get_data(
     # LOAD APPLIANCES
     # =====================================================
     for app in chosen_apps:
-
+        app_list_real.append(house5_appp_id[app])
         appliance_df = pd.read_hdf(
             filename,
             key="building5/elec/meter" + str(app)
@@ -243,5 +243,5 @@ def get_data(
         Y_test,
         X,
         Y,
-        house5_appp_id[chosen_apps]
+        app_list_real
     )
