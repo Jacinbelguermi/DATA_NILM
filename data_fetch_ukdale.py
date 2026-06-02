@@ -60,12 +60,12 @@ def get_data(
     merged_df = data.copy()
 
     merged_df = merged_df.sort_index()
-
+    app_list_real = []
     # =====================================================
     # LOAD APPLIANCES
     # =====================================================
     for app in chosen_apps:
-
+        app_list_real.append(house5_appp_id[app])
         appliance_df = pd.read_hdf(
             filename,
             key="building5/elec/meter" + str(app)
@@ -254,5 +254,5 @@ def get_data(
         Y_test,
         X,
         Y,
-        house5_appp_id[chosen_apps]
+        app_list_real
     )
