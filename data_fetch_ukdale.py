@@ -163,8 +163,9 @@ def get_data(
     # =====================================================
     # SPLIT FUNCTIONS
     # =====================================================
+    
     def split_data(data, leng=100, overlap_step=50):
-
+        step = leng - overlap_step
         XTR = data[0].copy()
         YTR = data[1].copy()
 
@@ -173,7 +174,7 @@ def get_data(
         lisXTR = []
         lisYTR = []
 
-        for l in range(0, M - leng, overlap_step):
+        for l in range(0, M - leng, step):
 
             lIdx = l
             hIdx = l + leng
