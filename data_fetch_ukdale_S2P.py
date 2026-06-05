@@ -14,6 +14,7 @@ def get_data(
     overlap=10,
     train_ratio=0.75,
     normalize=False,
+    S2MP = True
     thresholds=None
 ):
     app_list_real = []
@@ -181,8 +182,10 @@ def get_data(
             mid = l+ int(leng/2)
             #maxes.append(np.max(XTR[lIdx:hIdx,:]))
             lisXTR.append(XTR[lIdx:hIdx].copy())
-            lisYTR.append(YTR[mid,:].copy())
-
+            if S2MP :
+                lisYTR.append(YTR[mid,:].copy())
+            else : 
+                lisYTR.append(YTR[hIdx-1,:].copy())
         return np.asarray(lisXTR),np.asarray(lisYTR)#, np.asarray(maxes
 
 
@@ -204,7 +207,11 @@ def get_data(
             mid = l+ int(leng/2)
             #maxes.append(np.max(XTR[lIdx:hIdx,:]))
             lisXTR.append(XTR[lIdx:hIdx].copy())
-            lisYTR.append(YTR[mid,:].copy())
+            
+            if S2MP :
+                lisYTR.append(YTR[mid,:].copy())
+            else : 
+                lisYTR.append(YTR[hIdx-1,:].copy())
 
         return np.asarray(lisXTR),np.asarray(lisYTR)
 

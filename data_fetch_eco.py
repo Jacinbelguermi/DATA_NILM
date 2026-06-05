@@ -11,7 +11,7 @@ def get_data(
     segment_length=30,
     aggregate_input=False,
     normalization=False,
-    middle_point = True
+    S2MP = True
 ):
 
     # =====================================================
@@ -58,7 +58,7 @@ def get_data(
             lisXTR.append(
                 XTR[lIdx:hIdx].copy()
             )
-            if (middle_point == False):
+            if (S2MP == False):
                 lisYTR.append(
                 YTR[hIdx - 1].copy()
             )

@@ -4,7 +4,7 @@ def get_data(segment_length=30,
              p_path="/content/drive/MyDrive/progressive disag/ampds2/Electricity_P.csv",
              q_path="/content/drive/MyDrive/progressive disag/ampds2/Electricity_Q.csv",
              i_path="/content/drive/MyDrive/progressive disag/ampds2/Electricity_I.csv",
-             train_test_days=[365, 365+60]):
+             train_test_days=[365, 365+60],S2MP = True):
 
     # =========================
     # LOAD DATA
@@ -145,13 +145,19 @@ def get_data(segment_length=30,
         for i in range(M - length):
             mid = i + length // 2
             lisXTR.append(XTR[i:i+length].copy())
-            lisYTR.append(YTR[mid].copy())
+            if S2MP :
+                lisYTR.append(YTR[mid,:].copy())
+            else : 
+                lisYTR.append(YTR[i+length-1,:].copy())
 
         # TEST
         for i in range(N - length):
             mid = i + length // 2
             lisXTS.append(XTS[i:i+length].copy())
-            lisYTS.append(YTS[mid].copy())
+            if S2MP :
+                lisYTR.append(YTR[mid,:].copy())
+            else : 
+                lisYTR.append(YTR[i+length-1,:].copy())
 
         return (np.asarray(lisXTR),
                 np.asarray(lisXTS),
