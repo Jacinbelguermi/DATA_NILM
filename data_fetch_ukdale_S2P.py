@@ -14,7 +14,7 @@ def get_data(
     overlap=10,
     train_ratio=0.75,
     normalize=False,
-    S2MP = True
+    S2MP = True,
     thresholds=None
 ):
     app_list_real = []
