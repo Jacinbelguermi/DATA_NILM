@@ -194,7 +194,7 @@ def get_data(
 
     def split_data_test(data, leng=100):
 
-        XTR = data[0].copy()²
+        XTR = data[0].copy()
         YTR = data[1].copy()
 
         M = int(XTR.shape[0])
